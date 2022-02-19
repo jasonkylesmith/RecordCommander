@@ -26,5 +26,6 @@ pyinstaller -F -i "icon.ico" -n "Record Commander" RecordCommander.py --windowed
     - Make UI more pleasing
     - Implement keybinds for increments/decrements
     - Allow keybinds to be customized
+    - Update icon.ico
 
 ## Current Version 0.1.1
