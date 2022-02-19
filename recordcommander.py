@@ -18,13 +18,13 @@ winsLbl=Label(window, text="Wins", font=("Helvetica", 30))
 winsLbl.place(x=0, y=0)
 
 winsNum=Label(window, text=wins, font=("Helvetica", 30))
-winsNum.place(x=0, y=50)
+winsNum.place(x=140, y=0)
 
 winMnsBtn=Button(window, text="-", font=("Helvetica", 16))
-winMnsBtn.place(x=60, y=50)
+winMnsBtn.place(x=220, y=0)
 
 winPlsBtn=Button(window, text="+", font=("Helvetica", 16))
-winPlsBtn.place(x=90, y=50)
+winPlsBtn.place(x=250, y=0)
 
 def updateRecord():
     global wins
@@ -59,16 +59,16 @@ winPlsBtn.bind('<Button-1>', increaseWins)
 winMnsBtn.bind('<Button-1>', decreaseWins)
 
 lossLbl=Label(window, text="Losses", font=("Helvetica", 30))
-lossLbl.place(x=0, y=100)
+lossLbl.place(x=0, y=60)
 
 lossNum=Label(window, text=losses, font=("Helvetica", 30))
-lossNum.place(x=0, y=150)
+lossNum.place(x=140, y=60)
 
 lossMnsBtn=Button(window, text="-", font=("Helvetica", 16))
-lossMnsBtn.place(x=60, y=150)
+lossMnsBtn.place(x=220, y=60)
 
 lossPlsBtn=Button(window, text="+", font=("Helvetica", 16))
-lossPlsBtn.place(x=90, y=150)
+lossPlsBtn.place(x=250, y=60)
 
 def increaseLosses(event):
     global losses
@@ -89,16 +89,16 @@ lossPlsBtn.bind('<Button-1>', increaseLosses)
 lossMnsBtn.bind('<Button-1>', decreaseLosses)
 
 tiesLbl=Label(window, text="Ties", font=("Helvetica", 30))
-tiesLbl.place(x=0, y=200)
+tiesLbl.place(x=0, y=120)
 
 tiesNum=Label(window, text=wins, font=("Helvetica", 30))
-tiesNum.place(x=0, y=250)
+tiesNum.place(x=140, y=120)
 
 tieMnsBtn=Button(window, text="-", font=("Helvetica", 16))
-tieMnsBtn.place(x=60, y=250)
+tieMnsBtn.place(x=220, y=120)
 
 tiePlsBtn=Button(window, text="+", font=("Helvetica", 16))
-tiePlsBtn.place(x=90, y=250)
+tiePlsBtn.place(x=250, y=120)
 
 def increaseTies(event):
     global ties
@@ -129,6 +129,7 @@ if __name__ == "__main__":
     main()
 
 window.title('Record Commander')
-window.geometry("300x300+10+10")
+window.geometry("300x170+10+10")
+window.resizable(False, False)
 window.mainloop()
 
