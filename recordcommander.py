@@ -1,5 +1,14 @@
 from tkinter import *
+
 window=Tk()
+window.title('Record Commander')
+window.configure(bg="#1f1f1f")
+window.geometry("300x200")
+window.resizable(False, False)
+
+
+""" 
+https://www.tutorialspoint.com/python/tk_frame.htm """
 
 wins=0
 losses=0
@@ -12,19 +21,6 @@ def resetRecord():
     file.truncate(0)
     file.write("Record 0-0")
     file.close
-
-
-winsLbl=Label(window, text="Wins", font=("Helvetica", 30))
-winsLbl.place(x=0, y=0)
-
-winsNum=Label(window, text=wins, font=("Helvetica", 30))
-winsNum.place(x=0, y=50)
-
-winMnsBtn=Button(window, text="-", font=("Helvetica", 16))
-winMnsBtn.place(x=60, y=50)
-
-winPlsBtn=Button(window, text="+", font=("Helvetica", 16))
-winPlsBtn.place(x=90, y=50)
 
 def updateRecord():
     global wins
@@ -39,6 +35,36 @@ def updateRecord():
     file.truncate(0)
     file.write(record)
     file.close
+
+window.columnconfigure(0, weight=1)
+window.columnconfigure(1, weight=1)
+window.columnconfigure(2, weight=1)
+window.columnconfigure(3, weight=1)
+window.columnconfigure(4, weight=1)
+window.columnconfigure(5, weight=1)
+window.columnconfigure(6, weight=1)
+window.rowconfigure(0,weight=1)
+window.rowconfigure(1,weight=1)
+window.rowconfigure(2,weight=1)
+
+
+winsLbl=Label(window, text="Wins", font=("Helvetica", 30), background="#1f1f1f", foreground="white")
+winsLbl.grid(column=0, row=0, columnspan=3, sticky=W, padx=5)
+
+winsNum=Label(window, text=wins, font=("Helvetica", 30), width=2, background="#1f1f1f", foreground="white")
+winsNum.grid(column=3, row=0, columnspan=2, sticky=E)
+
+winsBtnFrm=Frame(window)
+winsBtnFrm.columnconfigure(0, weight=1)
+winsBtnFrm.columnconfigure(1, weight=1)
+winsBtnFrm.rowconfigure(0, weight=1)
+winsBtnFrm.grid(column=5, row=0, columnspan=2, sticky=E, padx=5)
+
+winMnsBtn=Button(winsBtnFrm, text="-", font=("Helvetica", 16), width=1, bg="white", foreground="#1f1f1f")
+winMnsBtn.grid(column=0, row=0, ipadx=10, ipady=0)
+
+winPlsBtn=Button(winsBtnFrm, text="+", font=("Helvetica", 16), width=1, bg="white", foreground="#1f1f1f")
+winPlsBtn.grid(column=1, row=0, ipadx=10, ipady=0)
 
 def increaseWins(event):
     global wins
@@ -58,17 +84,25 @@ def decreaseWins(event):
 winPlsBtn.bind('<Button-1>', increaseWins)
 winMnsBtn.bind('<Button-1>', decreaseWins)
 
-lossLbl=Label(window, text="Losses", font=("Helvetica", 30))
-lossLbl.place(x=0, y=100)
 
-lossNum=Label(window, text=losses, font=("Helvetica", 30))
-lossNum.place(x=0, y=150)
 
-lossMnsBtn=Button(window, text="-", font=("Helvetica", 16))
-lossMnsBtn.place(x=60, y=150)
+lossLbl=Label(window, text="Losses", font=("Helvetica", 30), background="#1f1f1f", foreground="white")
+lossLbl.grid(column=0, row=1, columnspan=3, sticky=W, padx=5)
 
-lossPlsBtn=Button(window, text="+", font=("Helvetica", 16))
-lossPlsBtn.place(x=90, y=150)
+lossNum=Label(window, text=losses, font=("Helvetica", 30), width=2, background="#1f1f1f", foreground="white")
+lossNum.grid(column=3, row=1, columnspan=2, sticky=E)
+
+lossesBtnFrm=Frame(window)
+lossesBtnFrm.columnconfigure(0, weight=1)
+lossesBtnFrm.columnconfigure(1, weight=1)
+lossesBtnFrm.rowconfigure(0, weight=1)
+lossesBtnFrm.grid(column=5, row=1, columnspan=2, sticky=E, padx=5)
+
+lossMnsBtn=Button(lossesBtnFrm, text="-", font=("Helvetica", 16), width=1, bg="white", foreground="#1f1f1f")
+lossMnsBtn.grid(column=0, row=0, ipadx=10, ipady=0)
+
+lossPlsBtn=Button(lossesBtnFrm, text="+", font=("Helvetica", 16), width=1, bg="white", foreground="#1f1f1f")
+lossPlsBtn.grid(column=1, row=0, ipadx=10, ipady=0)
 
 def increaseLosses(event):
     global losses
@@ -88,17 +122,25 @@ def decreaseLosses(event):
 lossPlsBtn.bind('<Button-1>', increaseLosses)
 lossMnsBtn.bind('<Button-1>', decreaseLosses)
 
-tiesLbl=Label(window, text="Ties", font=("Helvetica", 30))
-tiesLbl.place(x=0, y=200)
 
-tiesNum=Label(window, text=wins, font=("Helvetica", 30))
-tiesNum.place(x=0, y=250)
 
-tieMnsBtn=Button(window, text="-", font=("Helvetica", 16))
-tieMnsBtn.place(x=60, y=250)
+tiesLbl=Label(window, text="Ties", font=("Helvetica", 30), background="#1f1f1f", foreground="white")
+tiesLbl.grid(column=0, row=2, columnspan=3, sticky=W, padx=5)
 
-tiePlsBtn=Button(window, text="+", font=("Helvetica", 16))
-tiePlsBtn.place(x=90, y=250)
+tiesNum=Label(window, text=wins, font=("Helvetica", 30), width=2, background="#1f1f1f", foreground="white")
+tiesNum.grid(column=3, row=2, columnspan=2, sticky=E)
+
+tiesBtnFrm=Frame(window)
+tiesBtnFrm.columnconfigure(0, weight=1)
+tiesBtnFrm.columnconfigure(1, weight=1)
+tiesBtnFrm.rowconfigure(0, weight=1)
+tiesBtnFrm.grid(column=5, row=2, columnspan=2, sticky=E, padx=5)
+
+tieMnsBtn=Button(tiesBtnFrm, text="-", font=("Helvetica", 16), width=1, bg="white", foreground="#1f1f1f")
+tieMnsBtn.grid(column=0, row=0, ipadx=10, ipady=0)
+
+tiePlsBtn=Button(tiesBtnFrm, text="+", font=("Helvetica", 16), width=1, bg="white", foreground="#1f1f1f")
+tiePlsBtn.grid(column=1, row=0, ipadx=10, ipady=0)
 
 def increaseTies(event):
     global ties
@@ -118,9 +160,7 @@ def decreaseTies(event):
 tiePlsBtn.bind('<Button-1>', increaseTies)
 tieMnsBtn.bind('<Button-1>', decreaseTies)
 
-""" window.bind('<Control-Key-1>', increaseWins) """
-
-
+window.bind('<Control-Key-1>', increaseWins)
 
 def main():
     resetRecord()
@@ -128,6 +168,5 @@ def main():
 if __name__ == "__main__":
     main()
 
-window.title('Record Commander')
-window.geometry("300x300+10+10")
+
 window.mainloop()
